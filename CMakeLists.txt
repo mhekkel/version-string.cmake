@@ -8,5 +8,8 @@ include(VersionString)
 
 write_version_header("${PROJECT_SOURCE_DIR}/src")
 
+add_subdirectory(mylib)
+
 add_executable(unit-test-1 ${PROJECT_SOURCE_DIR}/src/unit-test.cpp)
+target_link_libraries(unit-test-1 mylib::mylib)
 

@@ -242,9 +242,9 @@ add_library(mylib ${PROJECT_SOURCE_DIR}/mylib.cpp)
 add_library(mylib::mylib ALIAS mylib)
 
 target_include_directories(mylib
-	PUBLIC
-	"$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>"
-	"$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+    PUBLIC
+    "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>"
+    "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
 )
 ```
 

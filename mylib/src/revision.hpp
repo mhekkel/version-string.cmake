@@ -4,11 +4,11 @@
 
 #include <ostream>
 
-constexpr const char k@VAR_PREFIX@ProjectName[] = "@PROJECT_NAME@";
-constexpr const char k@VAR_PREFIX@VersionNumber[] = "@PROJECT_VERSION@";
-constexpr int k@VAR_PREFIX@BuildNumber = @BUILD_NUMBER@;
-constexpr const char k@VAR_PREFIX@RevisionGitTag[] = "@REVISION_GIT_TAGREF@";
-constexpr const char k@VAR_PREFIX@RevisionDate[] = "@REVISION_DATE_TIME@";
+constexpr const char kmylibProjectName[] = "mylib";
+constexpr const char kmylibVersionNumber[] = "1.0.0";
+constexpr int kmylibBuildNumber = 1;
+constexpr const char kmylibRevisionGitTag[] = "2a27145*";
+constexpr const char kmylibRevisionDate[] = "2023-08-18T06:26:59Z";
 
 #ifndef VERSION_INFO_DEFINED
 #define VERSION_INFO_DEFINED 1
@@ -128,11 +128,11 @@ inline void write_version_string(std::ostream &os, bool verbose)
 
 #endif
 
-class version_info_@IDENT_PREFIX@impl : public version_info_v1_1::version_info<version_info_@IDENT_PREFIX@impl>
+class version_info_mylib_impl : public version_info_v1_1::version_info<version_info_mylib_impl>
 {
   public:
-	version_info_@IDENT_PREFIX@impl()
-		: version_info(k@VAR_PREFIX@ProjectName, k@VAR_PREFIX@VersionNumber, k@VAR_PREFIX@BuildNumber, k@VAR_PREFIX@RevisionGitTag, k@VAR_PREFIX@RevisionDate, @BOOL_IS_MAIN@)
+	version_info_mylib_impl()
+		: version_info(kmylibProjectName, kmylibVersionNumber, kmylibBuildNumber, kmylibRevisionGitTag, kmylibRevisionDate, false)
 	{
 	}
 };

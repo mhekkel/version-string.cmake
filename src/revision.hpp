@@ -6,9 +6,9 @@
 
 constexpr const char kProjectName[] = "version_string";
 constexpr const char kVersionNumber[] = "1.1.0";
-constexpr int kBuildNumber = 0;
-constexpr const char kRevisionGitTag[] = "";
-constexpr const char kRevisionDate[] = "";
+constexpr int kBuildNumber = 1;
+constexpr const char kRevisionGitTag[] = "2a27145*";
+constexpr const char kRevisionDate[] = "2023-08-18T06:26:59Z";
 
 #ifndef VERSION_INFO_DEFINED
 #define VERSION_INFO_DEFINED 1
@@ -19,22 +19,23 @@ namespace version_info_v1_1
 class version_info_base
 {
   public:
-
-	static void write(std::ostream &os, bool verbose)
+	static void write_version_string(std::ostream &os, bool verbose)
 	{
 		auto s_main = registered_main();
 		if (s_main != nullptr)
-			s_main->write_self(os, verbose);
-		
+			s_main->write(os, verbose);
+
 		if (verbose)
 		{
 			for (auto lib = registered_libraries(); lib != nullptr; lib = lib->m_next)
-				lib->write_self(os, verbose);
+			{
+				os << '-' << std::endl;
+				lib->write(os, verbose);
+			}
 		}
 	}
 
   protected:
-
 	version_info_base(const char *name, const char *version, int build_number, const char *git_tag, const char *revision_date, bool is_main)
 		: m_name(name)
 		, m_version(version)
@@ -52,7 +53,7 @@ class version_info_base
 		}
 	}
 
-	void write_self(std::ostream &os, bool verbose)
+	void write(std::ostream &os, bool verbose)
 	{
 		os << m_name << " version " << m_version << std::endl;
 
@@ -89,7 +90,7 @@ class version_info_base
 	version_info_base *m_next = nullptr;
 };
 
-template<typename T>
+template <typename T>
 class version_info : public version_info_base
 {
   public:
@@ -108,19 +109,21 @@ class version_info : public version_info_base
 		}
 	};
 
-	template<register_object&> struct reference_object;
+	template <register_object &>
+	struct reference_object;
 
 	static register_object s_registered_object;
 	static reference_object<s_registered_object> s_referenced_object;
 };
 
-template<typename T> typename version_info<T>::register_object version_info<T>::s_registered_object;
+template <typename T>
+typename version_info<T>::register_object version_info<T>::s_registered_object;
 
-}
+} // namespace version_info_v1_1
 
 inline void write_version_string(std::ostream &os, bool verbose)
 {
-	version_info_v1_1::version_info_base::write(os, verbose);
+	version_info_v1_1::version_info_base::write_version_string(os, verbose);
 }
 
 #endif
