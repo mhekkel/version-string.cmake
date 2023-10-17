@@ -55,7 +55,7 @@ Here's a hands-on. Let's write an application called hello-world. Here's a sourc
 
 int main(int argc, char * const argv[])
 {
-    std::cout << "Hello, world!" << std::endl;
+    std::cout << "Hello, world!\n";
     return 0;
 }
 ```
@@ -82,11 +82,11 @@ int main(int argc, char * const argv[])
 
     if (config.has("version"))
     {
-        std::cout << "hello version 1.0" << std::endl;
+        std::cout << "hello version 1.0\n";
         return 0;
     }
 
-    std::cout << "Hello, world!" << std::endl;
+    std::cout << "Hello, world!\n";
     return 0;
 }
 ```
@@ -150,7 +150,7 @@ int main(int argc, char * const argv[])
         return 0;
     }
 
-    std::cout << "Hello, world!" << std::endl;
+    std::cout << "Hello, world!\n";
     return 0;
 }
 ```
@@ -292,7 +292,7 @@ int main(int argc, char * const argv[])
         return 0;
     }
 
-    std::cout << "Hello, world!" << std::endl;
+    std::cout << "Hello, world!\n";
 
     (void)foo();
 

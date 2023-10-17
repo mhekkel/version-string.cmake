@@ -7,13 +7,13 @@ int main()
 {
 	(void)foo();
 
-	std::cout << "verbose false:" << std::endl;
+	std::cout << "verbose false:\n";
 	write_version_string(std::cout, false);
-	std::cout << std::endl;
+	std::cout << '\n';
 
-	std::cout << "verbose true:" << std::endl;
+	std::cout << "verbose true:\n";
 	write_version_string(std::cout, true);
-	std::cout << std::endl;
+	std::cout << '\n';
 
 	return 0;
 }

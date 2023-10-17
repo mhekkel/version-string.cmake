@@ -6,9 +6,9 @@
 
 constexpr const char kProjectName[] = "version_string";
 constexpr const char kVersionNumber[] = "1.1.0";
-constexpr int kBuildNumber = 1;
-constexpr const char kRevisionGitTag[] = "2a27145*";
-constexpr const char kRevisionDate[] = "2023-08-18T06:26:59Z";
+constexpr int kBuildNumber = 3;
+constexpr const char kRevisionGitTag[] = "fce7385*";
+constexpr const char kRevisionDate[] = "2023-10-17T08:24:00Z";
 
 #ifndef VERSION_INFO_DEFINED
 #define VERSION_INFO_DEFINED 1
@@ -29,7 +29,7 @@ class version_info_base
 		{
 			for (auto lib = registered_libraries(); lib != nullptr; lib = lib->m_next)
 			{
-				os << '-' << std::endl;
+				os << "-\n";
 				lib->write(os, verbose);
 			}
 		}
@@ -55,15 +55,15 @@ class version_info_base
 
 	void write(std::ostream &os, bool verbose)
 	{
-		os << m_name << " version " << m_version << std::endl;
+		os << m_name << " version " << m_version << '\n';
 
 		if (verbose)
 		{
 			if (m_build_number != 0)
 			{
-				os << "build: " << m_build_number << ' ' << m_revision_date << std::endl;
+				os << "build: " << m_build_number << ' ' << m_revision_date << '\n';
 				if (m_git_tag[0] != 0)
-					os << "git tag: " << m_git_tag << std::endl;
+					os << "git tag: " << m_git_tag << '\n';
 			}
 		}
 	}
