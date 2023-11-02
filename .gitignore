@@ -1,1 +1,4 @@
+.vscode
 build
+mylib/src/revision.hpp
+src/revision.hpp
