@@ -111,7 +111,7 @@ inline void write_version_string(std::ostream &os, bool verbose)
 
 #endif
 
-const class version_info_@IDENT_PREFIX@impl : public version_info_v1_1::version_info<version_info_@IDENT_PREFIX@impl>
+const class version_info_@IDENT_PREFIX@impl : public version_info_v1_2::version_info<version_info_@IDENT_PREFIX@impl>
 {
   public:
 	version_info_@IDENT_PREFIX@impl()
