@@ -50,7 +50,7 @@ To use VersionString.cmake, you obviously need to have cmake and you have to wri
 
 Here's a hands-on. Let's write an application called hello-world. Here's a source file called `hello.cpp`.
 
-```c++
+```cpp
 #include <iostream>
 
 int main(int argc, char * const argv[])
@@ -69,7 +69,7 @@ add_executable(hello ${PROJECT_SOURCE_DIR}/hello.cpp)
 
 To support switches, we need to parse the `argv` vector. Let's keep things simple and use [libmcfp](https://github.com/mhekkel/libmcfp.git) for that:
 
-```c++
+```cpp
 #include <mcfp/mcfp.hpp>
 #include <iostream>
 
@@ -130,7 +130,7 @@ A cmake configure step will now generate a file called _revision.hpp_ in the sou
 
 We can use this file in our program, which will now look like:
 
-```c++
+```cpp
 #include "revision.hpp"
 
 #include <mcfp/mcfp.hpp>
@@ -211,7 +211,7 @@ Now if we want to use a library and see it's version as well? Simple, let's go t
 
 First create a library in our project, start with a new directory called mylib and place the following file called mylib.cpp (note we already include revision.hpp):
 
-```c++
+```cpp
 #include "mylib.h"
 #include "revision.hpp"
 
@@ -223,7 +223,7 @@ int foo()
 
 And the accompanying header file called foo.h:
 
-```c++
+```cpp
 int foo();
 ```
 
@@ -270,7 +270,7 @@ target_link_libraries(hello libmcfp::libmcfp mylib::mylib)
 
 And update hello.cpp to use this library:
 
-```c++
+```cpp
 #include "revision.hpp"
 
 #include <mylib.h>
