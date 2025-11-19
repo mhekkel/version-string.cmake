@@ -119,10 +119,10 @@ project(hello VERSION 1.0.1 LANGUAGES CXX)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(VersionString)
-write_version_header(${PROJECT_SOURCE_DIR})
 
 find_package(libmcfp)
 add_executable(hello ${PROJECT_SOURCE_DIR}/hello.cpp)
+add_version_header(hello "${PROJECT_SOURCE_DIR}/revision.hpp")
 target_link_libraries(hello libmcfp::libmcfp)
 ```
 
@@ -235,11 +235,11 @@ cmake_minimum_required(VERSION 3.15)
 # set the project name
 project(mylib VERSION 0.1.0 LANGUAGES CXX)
 
-include(VersionString)
-write_version_header("${PROJECT_SOURCE_DIR}" LIB_NAME "mylib")
-
 add_library(mylib ${PROJECT_SOURCE_DIR}/mylib.cpp)
 add_library(mylib::mylib ALIAS mylib)
+
+include(VersionString)
+add_version_header(mylib "${PROJECT_SOURCE_DIR}/revision.hpp" LIB_NAME "mylib")
 
 target_include_directories(mylib
     PUBLIC
@@ -248,7 +248,7 @@ target_include_directories(mylib
 )
 ```
 
-Did you notice the *LIB_NAME* parameter to `write_version_header`? That way the variables and structs inside revision.hpp get a new name so they won't conflict with the ones in your main application.
+Did you notice the *LIB_NAME* parameter to `add_version_header`? That way the variables and structs inside revision.hpp get a new name so they won't conflict with the ones in your main application.
 
 Update our hello project:
 
@@ -258,13 +258,13 @@ project(hello VERSION 1.0.1 LANGUAGES CXX)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(VersionString)
-write_version_header(${PROJECT_SOURCE_DIR})
 
 find_package(libmcfp)
 
 add_subdirectory(mylib)
 
 add_executable(hello ${PROJECT_SOURCE_DIR}/hello.cpp)
+add_version_header(hello "${PROJECT_SOURCE_DIR}/revision.hpp")
 target_link_libraries(hello libmcfp::libmcfp mylib::mylib)
 ```
 

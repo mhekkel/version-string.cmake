@@ -34,21 +34,16 @@ cmake_minimum_required(VERSION 3.15)
 
 
 #[=======================================================================[.rst:
-.. command:: write_version_header
+.. command:: add_version_header
 
   Write a file named revision.hpp containing version info::
 
-	write_version_header(<destdir>
-	                     [FILE_NAME <file-name>]
-						 [LIB_NAME <library-name>]
+	add_version_header(<target> <filename>
+	                     [LIB_NAME <library-name>]
 	                    )
   
-  This command will generate the code to write a file name
-  revision.hpp in the directory ``<destdir>``.
+  This command will generate the code to write a file named ``<filename>``.
   
-  ``FILE_NAME``
-	Specify the name of the file to create, default is ``revision.hpp``.
-
   ``LIB_NAME``
 	Specify the library name which will be used as a prefix part for the
 	variables contained in the revision file.
