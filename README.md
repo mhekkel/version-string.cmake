@@ -6,7 +6,7 @@ About
 
 Wouldn't it be great if all software you use would have version information available built in? So you could ask for the version and know if it is the latest and greatest.
 
-Most software has the command line switch `--version`, so you can do e.g.:
+Many applications have a command line switch `--version`, so you can do e.g.:
 
 ```bash
 $ mrc --version

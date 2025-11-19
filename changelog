@@ -1,3 +1,10 @@
+Version 2.0.0
+- The generated file was not deleted when making clean,
+  this required a new setup and a new way of calling
+  the generating code. New function is add_version_header
+  and it requires two parameters: a target and a filename
+  with full path for the revision file.
+
 Version 1.2.0
 - Changed the way the instances are initiated
   Needed to make things work when using MSVC
