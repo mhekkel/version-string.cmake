@@ -119,4 +119,4 @@ const class version_info_@IDENT_PREFIX@impl : public version_info_v1_2::version_
 		: version_info(k@VAR_PREFIX@ProjectName, k@VAR_PREFIX@VersionNumber, k@VAR_PREFIX@BuildNumber, k@VAR_PREFIX@RevisionGitTag, k@VAR_PREFIX@RevisionDate, @BOOL_IS_MAIN@)
 	{
 	}
-} s_version_info_@IDENT_PREFIX@instance;
+} s_version_info_@IDENT_PREFIX@instance; // NOLINT
